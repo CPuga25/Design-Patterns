@@ -5,7 +5,7 @@ export class EnrollmentService {
     private notificationManager: NotificationManager;
 
     constructor() {
-        this.notificationManager = new NotificationManager();
+        this.notificationManager = NotificationManager.getSingleInstance();
     }
 
     public enrollStudent(studentEmail: string): void {
@@ -14,5 +14,6 @@ export class EnrollmentService {
 
         // Notificación de inscripción exitosa
         this.notificationManager.notifyByEmail('Tu inscripción al curso Patrones de Diseño fue exitosa', studentEmail);
+        this.notificationManager.notifyBySMS('Tu inscripción al curso Patrones de Diseño fue exitosa', studentEmail);
     }
 }

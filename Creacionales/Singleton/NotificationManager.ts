@@ -6,10 +6,22 @@ import { SMSNotificationService } from './SMSNotificationService';
 export class NotificationManager {
     private emailService: INotificationService;
     private smsService: INotificationService;
+    private static uniqueInstance: NotificationManager;
 
-    constructor() {
+
+    private constructor() {
         this.emailService = new EmailNotificationService();
         this.smsService = new SMSNotificationService();
+    }
+
+    public static getSingleInstance():NotificationManager{
+
+        if(!NotificationManager.uniqueInstance){
+
+            NotificationManager.uniqueInstance = new NotificationManager();
+        }
+        return NotificationManager.uniqueInstance;
+
     }
 
     public notifyByEmail(message: string, recipient: string): void {
