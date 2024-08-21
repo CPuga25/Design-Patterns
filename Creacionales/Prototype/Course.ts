@@ -4,14 +4,14 @@ import { Student } from "./Student";
 
 
 export class Course {
-    public name: string;
-    public description: string;
-    public materials: string[];
-    public instructorDetails: InstructorDetails;
-    public schedule: Schedule | null;
-    public students: Student[] | null;
-    public startDate: Date | null;
-    public endDate: Date | null;
+    private name: string;
+    private description: string;
+    private materials: string[];
+    private instructorDetails: InstructorDetails;
+    private schedule: Schedule | null;
+    private students: Student[] | null;
+    private startDate: Date | null;
+    private endDate: Date | null;
 
     constructor(
         name: string,
@@ -31,6 +31,37 @@ export class Course {
         this.students = students || []; // Lista vacía por defecto
         this.startDate = startDate || new Date(); // Valor por defecto
         this.endDate = endDate || new Date(); // Valor por defecto
+    }
+    public get getName():string{
+        return this.name
+    }
+
+    public get getDescription():string{
+        return this.description
+    }
+
+    public get getMaterials():string[]{
+        return this.materials
+    }
+
+    public get getInstructorDetails():InstructorDetails{
+        return this.instructorDetails
+    }
+
+    public get getSchedule():Schedule | null{
+        return this.schedule
+    }
+
+    public get getStudents():Student[]|null{
+        return this.students
+    }
+
+    public get getStartDate():Date|null{
+        return this.startDate
+    }
+
+    public get getEndDate():Date|null{
+        return this.endDate
     }
 
     public addExtraBehaviour(cadena:string):void{

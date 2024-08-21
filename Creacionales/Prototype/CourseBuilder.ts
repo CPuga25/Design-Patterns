@@ -62,14 +62,14 @@ export class CourseBuilder {
     }
 
     public fromPrototype(curso:Course):CourseBuilder{
-        this.name = curso.name;
-        this.description = curso.description;
-        this.materials = [...curso.materials];
-        this.instructorDetails = {...curso.instructorDetails};
-        this.schedule = curso.schedule? {...curso.schedule}:null;
-        this.students = curso.students? curso.students.map(student => ({ ...student })):null;
-        this.startDate = curso.startDate? new Date(curso.startDate.getTime()):null;
-        this.endDate = curso.endDate? new Date(curso.endDate.getTime()):null;
+        this.name = curso.getName;
+        this.description = curso.getDescription;
+        this.materials = [...curso.getMaterials];
+        this.instructorDetails = {...curso.getInstructorDetails};
+        this.schedule = curso.getSchedule? {...curso.getSchedule}:null;
+        this.students = curso.getStudents? curso.getStudents.map(student => ({ ...student })):null;
+        this.startDate = curso.getStartDate? new Date(curso.getStartDate.getTime()):null;
+        this.endDate = curso.getEndDate? new Date(curso.getEndDate.getTime()):null;
         this.customMethod = curso.addExtraBehaviour;
         return this;
 
